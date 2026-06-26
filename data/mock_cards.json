@@ -1,0 +1,462 @@
+[
+  {
+    "card_id": "RNS001",
+    "card_name": "Cyber Samurai",
+    "image_url": "https://via.placeholder.com/400x600/FF6B6B/FFFFFF?text=Cyber+Samurai",
+    "rarity": "legendary",
+    "artist": "Akira Tanaka",
+    "edition": "Genesis Collection",
+    "mint_date": "2024-03-15",
+    "total_supply": 100,
+    "current_price": 2.5,
+    "price_history": [1.2, 1.8, 2.1, 2.5],
+    "visual_traits": {
+      "primary_colors": ["#FF6B6B", "#4ECDC4", "#1A1A2E"],
+      "style": "cyberpunk",
+      "complexity": 8.5,
+      "mood": "intense"
+    },
+    "trading_history": {
+      "avg_hold_days": 45,
+      "velocity": "medium",
+      "total_trades": 23
+    }
+  },
+  {
+    "card_id": "RNS002",
+    "card_name": "Ethereal Dragon",
+    "image_url": "https://via.placeholder.com/400x600/9B59B6/FFFFFF?text=Ethereal+Dragon",
+    "rarity": "legendary",
+    "artist": "Luna Chen",
+    "edition": "Mystic Series",
+    "mint_date": "2024-04-02",
+    "total_supply": 50,
+    "current_price": 4.2,
+    "price_history": [2.8, 3.5, 4.0, 4.2],
+    "visual_traits": {
+      "primary_colors": ["#9B59B6", "#3498DB", "#E8DAEF"],
+      "style": "fantasy",
+      "complexity": 9.2,
+      "mood": "mystical"
+    },
+    "trading_history": {
+      "avg_hold_days": 120,
+      "velocity": "low",
+      "total_trades": 8
+    }
+  },
+  {
+    "card_id": "RNS003",
+    "card_name": "Neon Street Racer",
+    "image_url": "https://via.placeholder.com/400x600/F39C12/000000?text=Street+Racer",
+    "rarity": "rare",
+    "artist": "Marcus Lee",
+    "edition": "Urban Legends",
+    "mint_date": "2024-05-10",
+    "total_supply": 500,
+    "current_price": 0.8,
+    "price_history": [0.5, 0.6, 0.75, 0.8],
+    "visual_traits": {
+      "primary_colors": ["#F39C12", "#E74C3C", "#000000"],
+      "style": "urban",
+      "complexity": 6.8,
+      "mood": "energetic"
+    },
+    "trading_history": {
+      "avg_hold_days": 15,
+      "velocity": "high",
+      "total_trades": 142
+    }
+  },
+  {
+    "card_id": "RNS004",
+    "card_name": "Ancient Guardian",
+    "image_url": "https://via.placeholder.com/400x600/27AE60/FFFFFF?text=Ancient+Guardian",
+    "rarity": "epic",
+    "artist": "Sofia Rodriguez",
+    "edition": "Timeless Collection",
+    "mint_date": "2024-02-20",
+    "total_supply": 200,
+    "current_price": 1.5,
+    "price_history": [1.0, 1.2, 1.4, 1.5],
+    "visual_traits": {
+      "primary_colors": ["#27AE60", "#16A085", "#D4EDDA"],
+      "style": "nature",
+      "complexity": 7.5,
+      "mood": "calm"
+    },
+    "trading_history": {
+      "avg_hold_days": 90,
+      "velocity": "low",
+      "total_trades": 12
+    }
+  },
+  {
+    "card_id": "RNS005",
+    "card_name": "Quantum Hacker",
+    "image_url": "https://via.placeholder.com/400x600/00D9FF/000000?text=Quantum+Hacker",
+    "rarity": "rare",
+    "artist": "Alex Kim",
+    "edition": "Digital Frontier",
+    "mint_date": "2024-06-01",
+    "total_supply": 300,
+    "current_price": 1.1,
+    "price_history": [0.8, 0.9, 1.0, 1.1],
+    "visual_traits": {
+      "primary_colors": ["#00D9FF", "#00FF88", "#1A1A1A"],
+      "style": "tech",
+      "complexity": 8.0,
+      "mood": "mysterious"
+    },
+    "trading_history": {
+      "avg_hold_days": 30,
+      "velocity": "medium",
+      "total_trades": 45
+    }
+  },
+  {
+    "card_id": "RNS006",
+    "card_name": "Crimson Phoenix",
+    "image_url": "https://via.placeholder.com/400x600/E74C3C/FFD700?text=Crimson+Phoenix",
+    "rarity": "legendary",
+    "artist": "Isabella Rossi",
+    "edition": "Mythical Beasts",
+    "mint_date": "2024-01-15",
+    "total_supply": 75,
+    "current_price": 3.8,
+    "price_history": [2.5, 3.0, 3.5, 3.8],
+    "visual_traits": {
+      "primary_colors": ["#E74C3C", "#F39C12", "#FFD700"],
+      "style": "mythical",
+      "complexity": 9.0,
+      "mood": "powerful"
+    },
+    "trading_history": {
+      "avg_hold_days": 180,
+      "velocity": "very_low",
+      "total_trades": 5
+    }
+  },
+  {
+    "card_id": "RNS007",
+    "card_name": "Shadow Assassin",
+    "image_url": "https://via.placeholder.com/400x600/2C3E50/95A5A6?text=Shadow+Assassin",
+    "rarity": "epic",
+    "artist": "Yuki Tanaka",
+    "edition": "Dark Arts",
+    "mint_date": "2024-03-28",
+    "total_supply": 250,
+    "current_price": 1.8,
+    "price_history": [1.2, 1.5, 1.7, 1.8],
+    "visual_traits": {
+      "primary_colors": ["#2C3E50", "#34495E", "#95A5A6"],
+      "style": "dark_fantasy",
+      "complexity": 7.8,
+      "mood": "ominous"
+    },
+    "trading_history": {
+      "avg_hold_days": 60,
+      "velocity": "medium",
+      "total_trades": 28
+    }
+  },
+  {
+    "card_id": "RNS008",
+    "card_name": "Holographic Muse",
+    "image_url": "https://via.placeholder.com/400x600/FF69B4/FFFFFF?text=Holographic+Muse",
+    "rarity": "rare",
+    "artist": "Emma Watson",
+    "edition": "Digital Dreams",
+    "mint_date": "2024-05-22",
+    "total_supply": 400,
+    "current_price": 0.9,
+    "price_history": [0.6, 0.7, 0.85, 0.9],
+    "visual_traits": {
+      "primary_colors": ["#FF69B4", "#DA70D6", "#E6E6FA"],
+      "style": "futuristic",
+      "complexity": 7.2,
+      "mood": "dreamy"
+    },
+    "trading_history": {
+      "avg_hold_days": 20,
+      "velocity": "high",
+      "total_trades": 95
+    }
+  },
+  {
+    "card_id": "RNS009",
+    "card_name": "Titanium Golem",
+    "image_url": "https://via.placeholder.com/400x600/7F8C8D/FFFFFF?text=Titanium+Golem",
+    "rarity": "epic",
+    "artist": "David Chen",
+    "edition": "Mechanical Titans",
+    "mint_date": "2024-04-18",
+    "total_supply": 180,
+    "current_price": 2.0,
+    "price_history": [1.5, 1.7, 1.9, 2.0],
+    "visual_traits": {
+      "primary_colors": ["#7F8C8D", "#95A5A6", "#BDC3C7"],
+      "style": "industrial",
+      "complexity": 8.3,
+      "mood": "stoic"
+    },
+    "trading_history": {
+      "avg_hold_days": 75,
+      "velocity": "low",
+      "total_trades": 18
+    }
+  },
+  {
+    "card_id": "RNS010",
+    "card_name": "Solar Flare Warrior",
+    "image_url": "https://via.placeholder.com/400x600/FFA500/FFFF00?text=Solar+Warrior",
+    "rarity": "legendary",
+    "artist": "Carlos Mendez",
+    "edition": "Celestial Heroes",
+    "mint_date": "2024-02-08",
+    "total_supply": 60,
+    "current_price": 5.2,
+    "price_history": [3.5, 4.2, 4.8, 5.2],
+    "visual_traits": {
+      "primary_colors": ["#FFA500", "#FF4500", "#FFFF00"],
+      "style": "cosmic",
+      "complexity": 9.5,
+      "mood": "radiant"
+    },
+    "trading_history": {
+      "avg_hold_days": 200,
+      "velocity": "very_low",
+      "total_trades": 3
+    }
+  },
+  {
+    "card_id": "RNS011",
+    "card_name": "Ocean Depths Explorer",
+    "image_url": "https://via.placeholder.com/400x600/006994/00CED1?text=Ocean+Explorer",
+    "rarity": "rare",
+    "artist": "Marina Santos",
+    "edition": "Deep Blue",
+    "mint_date": "2024-06-15",
+    "total_supply": 350,
+    "current_price": 0.7,
+    "price_history": [0.5, 0.6, 0.65, 0.7],
+    "visual_traits": {
+      "primary_colors": ["#006994", "#00CED1", "#B0E0E6"],
+      "style": "aquatic",
+      "complexity": 6.5,
+      "mood": "tranquil"
+    },
+    "trading_history": {
+      "avg_hold_days": 25,
+      "velocity": "medium",
+      "total_trades": 67
+    }
+  },
+  {
+    "card_id": "RNS012",
+    "card_name": "Void Walker",
+    "image_url": "https://via.placeholder.com/400x600/000000/9B59B6?text=Void+Walker",
+    "rarity": "legendary",
+    "artist": "Viktor Noir",
+    "edition": "Dimensional Rifts",
+    "mint_date": "2024-01-30",
+    "total_supply": 40,
+    "current_price": 6.5,
+    "price_history": [4.0, 5.0, 6.0, 6.5],
+    "visual_traits": {
+      "primary_colors": ["#000000", "#9B59B6", "#4A0E4E"],
+      "style": "abstract",
+      "complexity": 9.8,
+      "mood": "enigmatic"
+    },
+    "trading_history": {
+      "avg_hold_days": 250,
+      "velocity": "very_low",
+      "total_trades": 2
+    }
+  },
+  {
+    "card_id": "RNS013",
+    "card_name": "Jungle Spirit",
+    "image_url": "https://via.placeholder.com/400x600/228B22/90EE90?text=Jungle+Spirit",
+    "rarity": "epic",
+    "artist": "Amara Green",
+    "edition": "Wild Nature",
+    "mint_date": "2024-05-05",
+    "total_supply": 220,
+    "current_price": 1.6,
+    "price_history": [1.1, 1.3, 1.5, 1.6],
+    "visual_traits": {
+      "primary_colors": ["#228B22", "#90EE90", "#F0FFF0"],
+      "style": "organic",
+      "complexity": 7.0,
+      "mood": "vibrant"
+    },
+    "trading_history": {
+      "avg_hold_days": 50,
+      "velocity": "medium",
+      "total_trades": 32
+    }
+  },
+  {
+    "card_id": "RNS014",
+    "card_name": "Plasma Ronin",
+    "image_url": "https://via.placeholder.com/400x600/FF00FF/00FFFF?text=Plasma+Ronin",
+    "rarity": "rare",
+    "artist": "Kenji Sato",
+    "edition": "Neon Samurai",
+    "mint_date": "2024-04-25",
+    "total_supply": 280,
+    "current_price": 1.3,
+    "price_history": [0.9, 1.0, 1.2, 1.3],
+    "visual_traits": {
+      "primary_colors": ["#FF00FF", "#00FFFF", "#1C1C1C"],
+      "style": "neon",
+      "complexity": 8.1,
+      "mood": "electric"
+    },
+    "trading_history": {
+      "avg_hold_days": 35,
+      "velocity": "medium",
+      "total_trades": 52
+    }
+  },
+  {
+    "card_id": "RNS015",
+    "card_name": "Crystalline Sage",
+    "image_url": "https://via.placeholder.com/400x600/4169E1/ADD8E6?text=Crystalline+Sage",
+    "rarity": "epic",
+    "artist": "Sophia Crystal",
+    "edition": "Wisdom Stones",
+    "mint_date": "2024-03-12",
+    "total_supply": 160,
+    "current_price": 2.2,
+    "price_history": [1.5, 1.8, 2.0, 2.2],
+    "visual_traits": {
+      "primary_colors": ["#4169E1", "#ADD8E6", "#F0F8FF"],
+      "style": "ethereal",
+      "complexity": 8.7,
+      "mood": "serene"
+    },
+    "trading_history": {
+      "avg_hold_days": 100,
+      "velocity": "low",
+      "total_trades": 14
+    }
+  },
+  {
+    "card_id": "RNS016",
+    "card_name": "Inferno Djinn",
+    "image_url": "https://via.placeholder.com/400x600/DC143C/FF8C00?text=Inferno+Djinn",
+    "rarity": "legendary",
+    "artist": "Rashid Al-Noor",
+    "edition": "Elemental Forces",
+    "mint_date": "2024-02-14",
+    "total_supply": 80,
+    "current_price": 4.5,
+    "price_history": [3.0, 3.5, 4.0, 4.5],
+    "visual_traits": {
+      "primary_colors": ["#DC143C", "#FF8C00", "#FFD700"],
+      "style": "elemental",
+      "complexity": 9.3,
+      "mood": "fierce"
+    },
+    "trading_history": {
+      "avg_hold_days": 150,
+      "velocity": "very_low",
+      "total_trades": 6
+    }
+  },
+  {
+    "card_id": "RNS017",
+    "card_name": "Pixel Phantom",
+    "image_url": "https://via.placeholder.com/400x600/8B008B/FF1493?text=Pixel+Phantom",
+    "rarity": "rare",
+    "artist": "Retro Dev",
+    "edition": "8-Bit Legends",
+    "mint_date": "2024-06-08",
+    "total_supply": 500,
+    "current_price": 0.6,
+    "price_history": [0.4, 0.5, 0.55, 0.6],
+    "visual_traits": {
+      "primary_colors": ["#8B008B", "#FF1493", "#00FF00"],
+      "style": "retro",
+      "complexity": 5.5,
+      "mood": "nostalgic"
+    },
+    "trading_history": {
+      "avg_hold_days": 10,
+      "velocity": "very_high",
+      "total_trades": 210
+    }
+  },
+  {
+    "card_id": "RNS018",
+    "card_name": "Starlight Archer",
+    "image_url": "https://via.placeholder.com/400x600/4B0082/DDA0DD?text=Starlight+Archer",
+    "rarity": "epic",
+    "artist": "Luna Star",
+    "edition": "Cosmic Rangers",
+    "mint_date": "2024-05-18",
+    "total_supply": 190,
+    "current_price": 1.9,
+    "price_history": [1.3, 1.5, 1.7, 1.9],
+    "visual_traits": {
+      "primary_colors": ["#4B0082", "#DDA0DD", "#E6E6FA"],
+      "style": "celestial",
+      "complexity": 7.9,
+      "mood": "graceful"
+    },
+    "trading_history": {
+      "avg_hold_days": 55,
+      "velocity": "medium",
+      "total_trades": 26
+    }
+  },
+  {
+    "card_id": "RNS019",
+    "card_name": "Rust Knight",
+    "image_url": "https://via.placeholder.com/400x600/8B4513/CD853F?text=Rust+Knight",
+    "rarity": "rare",
+    "artist": "Forge Master",
+    "edition": "Fallen Empire",
+    "mint_date": "2024-03-20",
+    "total_supply": 320,
+    "current_price": 1.0,
+    "price_history": [0.7, 0.8, 0.9, 1.0],
+    "visual_traits": {
+      "primary_colors": ["#8B4513", "#CD853F", "#DEB887"],
+      "style": "weathered",
+      "complexity": 6.9,
+      "mood": "melancholic"
+    },
+    "trading_history": {
+      "avg_hold_days": 40,
+      "velocity": "medium",
+      "total_trades": 48
+    }
+  },
+  {
+    "card_id": "RNS020",
+    "card_name": "Nexus Guardian",
+    "image_url": "https://via.placeholder.com/400x600/00FF00/0000FF?text=Nexus+Guardian",
+    "rarity": "legendary",
+    "artist": "Digital Architect",
+    "edition": "Matrix Protocol",
+    "mint_date": "2024-01-10",
+    "total_supply": 50,
+    "current_price": 7.0,
+    "price_history": [4.5, 5.5, 6.5, 7.0],
+    "visual_traits": {
+      "primary_colors": ["#00FF00", "#0000FF", "#00FFFF"],
+      "style": "digital",
+      "complexity": 9.9,
+      "mood": "transcendent"
+    },
+    "trading_history": {
+      "avg_hold_days": 300,
+      "velocity": "very_low",
+      "total_trades": 1
+    }
+  }
+]
