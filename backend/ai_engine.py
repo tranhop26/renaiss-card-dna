@@ -6,7 +6,7 @@ Phân tích visual, behavioral, và market DNA của cards
 import json
 from typing import Dict, List, Tuple
 from pathlib import Path
-import numpy as np
+# import numpy as np
 # from sklearn.cluster import KMeans
 # from sklearn.preprocessing import StandardScaler
 import hashlib
@@ -20,7 +20,7 @@ class CardDNAAnalyzer:
 
     def __init__(self, cards_data: List[Dict]):
         self.cards = cards_data
-        # self.scaler = StandardScaler()
+        self.scaler = StandardScaler()
 
     def analyze_visual_dna(self, card: Dict) -> Dict:
         """
