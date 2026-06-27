@@ -40,7 +40,15 @@ Unlike traditional tools that only show raw stats, Card DNA reveals the **person
 
 ## ✨ Features
 
-### 🤖 **AI Chat Advisor** ⭐ NEW!
+### ⚖️ **Card Comparison Tool** 🔥 NEW!
+Side-by-side card comparison with AI-powered recommendations:
+- Compare any two cards across Visual, Behavioral, and Market DNA
+- AI analysis explains which card fits your collection better
+- Winner detection based on overall DNA compatibility
+- Key differences visualization (score diff, complexity diff, style match)
+- **Try it:** `/compare` endpoint
+
+### 🤖 **AI Chat Advisor** ⭐
 Real-time conversational AI powered by OpenAI GPT-3.5:
 - Ask questions about any card's DNA and personality
 - Get personalized trading strategy advice
