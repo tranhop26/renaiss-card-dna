@@ -6,6 +6,8 @@
 
 Every card has a soul. Discover yours.
 
+![Hero Section](./screenshots/hero.png)
+
 ---
 
 ## 🎯 What is Card DNA?
@@ -17,6 +19,22 @@ Renaiss Card DNA is an AI-powered platform that analyzes collectible cards acros
 - **Market DNA**: Volatility, rarity, price momentum, and collection synergy
 
 Unlike traditional tools that only show raw stats, Card DNA reveals the **personality** of each card and matches collectors with cards that fit their vibe.
+
+---
+
+## 📸 Screenshots
+
+### AI Chat Advisor
+![AI Chat](./screenshots/ai-chat.png)
+*Real-time conversational AI powered by OpenAI GPT-3.5*
+
+### Portfolio Analytics
+![Portfolio Analytics](./screenshots/portfolio-analytics.png)
+*Deep dive into your collection's DNA with interactive charts*
+
+### Card DNA Analyzer
+![Card DNA Analyzer](./screenshots/card-dna-analyzer.png)
+*Multi-dimensional personality analysis for each card*
 
 ---
 
