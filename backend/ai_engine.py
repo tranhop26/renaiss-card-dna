@@ -4,11 +4,10 @@ Phân tích visual, behavioral, và market DNA của cards
 """
 
 import json
+import random
+import statistics
 from typing import Dict, List, Tuple
 from pathlib import Path
-# import numpy as np
-# from sklearn.cluster import KMeans
-# from sklearn.preprocessing import StandardScaler
 import hashlib
 
 
@@ -20,7 +19,6 @@ class CardDNAAnalyzer:
 
     def __init__(self, cards_data: List[Dict]):
         self.cards = cards_data
-        self.scaler = StandardScaler()
 
     def analyze_visual_dna(self, card: Dict) -> Dict:
         """
@@ -132,11 +130,20 @@ class CardDNAAnalyzer:
         price_history = card.get("price_history", [])
         rarity = card.get("rarity", "common")
 
-        # Calculate volatility
+        # Calculate volatility (standard deviation of returns)
         if len(price_history) > 1:
-            prices = np.array(price_history)
-            returns = np.diff(prices) / prices[:-1]
-            volatility = float(np.std(returns))
+            # Calculate returns manually
+            returns = []
+            for i in range(1, len(price_history)):
+                if price_history[i-1] != 0:
+                    ret = (price_history[i] - price_history[i-1]) / price_history[i-1]
+                    returns.append(ret)
+
+            # Calculate standard deviation manually
+            if returns:
+                volatility = statistics.stdev(returns) if len(returns) > 1 else 0.1
+            else:
+                volatility = 0.1
         else:
             volatility = 0.1
 
@@ -291,24 +298,32 @@ class CardDNAAnalyzer:
         """
         # Mock implementation - hash wallet để tạo deterministic profile
         wallet_hash = int(hashlib.md5(wallet_address.encode()).hexdigest()[:8], 16)
-        np.random.seed(wallet_hash % 10000)
 
-        # Random style distribution
+        # Use wallet_hash as seed for random
+        random.seed(wallet_hash % 10000)
+
+        # Random style distribution using Dirichlet-like distribution
         styles = ["cyberpunk", "fantasy", "dark_fantasy", "cosmic", "tech"]
-        weights = np.random.dirichlet(np.ones(5))
 
-        primary_style = styles[np.argmax(weights)]
+        # Generate random weights and normalize
+        raw_weights = [random.random() for _ in range(5)]
+        total = sum(raw_weights)
+        weights = [w / total for w in raw_weights]
+
+        # Find primary style (max weight)
+        max_weight_index = weights.index(max(weights))
+        primary_style = styles[max_weight_index]
 
         # Mock collection
-        num_cards = np.random.randint(5, 30)
-        avg_hold = np.random.randint(20, 150)
+        num_cards = random.randint(5, 30)
+        avg_hold = random.randint(20, 150)
 
         return {
             "wallet": wallet_address,
             "collection_dna": {
                 "primary_style": primary_style.replace("_", " ").title(),
                 "style_distribution": {
-                    style: round(float(weight), 2)
+                    style: round(weight, 2)
                     for style, weight in zip(styles, weights)
                 },
                 "collector_type": "Strategic Trader" if avg_hold > 60 else "Active Trader",
