@@ -10,12 +10,21 @@ from typing import List, Dict, Optional
 import json
 from pathlib import Path
 from ai_engine import CardDNAAnalyzer
+import os
+from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = FastAPI(
     title="Renaiss Card DNA API",
     description="AI-powered card personality analysis and collector matching",
     version="1.0.0"
 )
+
+# Initialize OpenAI client
+openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Initialize AI analyzer globally
 def get_analyzer():
@@ -76,6 +85,17 @@ class MatchResult(BaseModel):
     match_score: float
     match_reasons: List[str]
     recommendation_strength: str  # "strong", "moderate", "weak"
+
+class ChatMessage(BaseModel):
+    """Chat message request"""
+    message: str
+    card_id: Optional[str] = None
+    context: Optional[Dict] = None
+
+class ChatResponse(BaseModel):
+    """Chat message response"""
+    response: str
+    card_referenced: Optional[str] = None
 
 # ============================================
 # HELPER FUNCTIONS
@@ -298,6 +318,86 @@ async def get_portfolio_analytics(wallet: str):
         "primary_style": profile["collection_dna"]["primary_style"],
         "collector_type": profile["collection_dna"]["collector_type"]
     }
+
+@app.post("/api/chat", response_model=ChatResponse)
+async def chat_with_advisor(chat_message: ChatMessage):
+    """
+    AI Chat Advisor - tư vấn về cards và collection
+
+    Args:
+        chat_message: Message từ user, optional card_id và context
+
+    Returns:
+        AI response
+    """
+    global analyzer
+    if analyzer is None:
+        analyzer = get_analyzer()
+
+    # Build context for AI
+    context_text = "You are a Renaiss Card DNA Advisor - an expert AI assistant specializing in digital trading cards.\n\n"
+
+    # If card_id provided, get card DNA
+    card_info = ""
+    if chat_message.card_id:
+        try:
+            dna = analyzer.calculate_card_dna(chat_message.card_id)
+            card_info = f"""
+**Card Context:**
+- Card: {dna['card_name']} ({dna['card_id']})
+- Rarity: {dna['rarity']}
+- Overall Score: {dna['overall_score']}/10
+- Style: {dna['visual_dna']['style']}
+- Complexity: {dna['visual_dna']['complexity_score']}/10
+- Collector Type: {dna['behavioral_dna']['collector_type']}
+- Price Momentum: {dna['market_dna']['price_momentum']}
+- Personality: {dna['personality_summary']}
+"""
+            context_text += card_info
+        except:
+            pass
+
+    # Add user's additional context
+    if chat_message.context:
+        context_text += f"\n**Additional Context:** {json.dumps(chat_message.context)}\n"
+
+    # System prompt
+    system_prompt = f"""{context_text}
+
+Your role:
+- Provide insights about card DNA, trading patterns, and collection strategy
+- Be concise but informative (2-4 sentences)
+- Use warm, friendly tone
+- Reference specific DNA metrics when relevant
+- Give actionable advice
+
+Guidelines:
+- This is demo data (20 mock cards)
+- Not financial advice - illustrative prototype only
+- Focus on card personality and collector fit
+"""
+
+    # Call OpenAI
+    try:
+        response = openai_client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": chat_message.message}
+            ],
+            temperature=0.7,
+            max_tokens=200
+        )
+
+        ai_response = response.choices[0].message.content
+
+        return ChatResponse(
+            response=ai_response,
+            card_referenced=chat_message.card_id
+        )
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI chat error: {str(e)}")
 
 # ============================================
 # RUN SERVER

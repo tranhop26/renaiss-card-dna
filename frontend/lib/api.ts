@@ -121,4 +121,22 @@ export const getPortfolioAnalytics = async (wallet: string): Promise<PortfolioAn
   return response.data;
 };
 
+export interface ChatResponse {
+  response: string;
+  card_referenced: string | null;
+}
+
+export const sendChatMessage = async (
+  message: string,
+  cardId?: string,
+  context?: Record<string, any>
+): Promise<ChatResponse> => {
+  const response = await api.post('/api/chat', {
+    message,
+    card_id: cardId,
+    context
+  });
+  return response.data;
+};
+
 export default api;

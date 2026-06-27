@@ -25,6 +25,9 @@ export default function HomePage() {
               <Link href="/portfolio" className="text-muted hover:text-ink transition">
                 Portfolio
               </Link>
+              <Link href="/chat" className="text-muted hover:text-ink transition">
+                AI Chat
+              </Link>
               <Link href="#about" className="text-muted hover:text-ink transition">
                 About
               </Link>
