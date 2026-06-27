@@ -371,13 +371,13 @@
     "card_id": "RNS017",
     "card_name": "Pixel Phantom",
     "image_url": "https://via.placeholder.com/400x600/8B008B/FF1493?text=Pixel+Phantom",
-    "rarity": "rare",
+    "rarity": "common",
     "artist": "Retro Dev",
     "edition": "8-Bit Legends",
     "mint_date": "2024-06-08",
-    "total_supply": 500,
-    "current_price": 0.6,
-    "price_history": [0.4, 0.5, 0.55, 0.6],
+    "total_supply": 5000,
+    "current_price": 0.15,
+    "price_history": [0.2, 0.18, 0.16, 0.15],
     "visual_traits": {
       "primary_colors": ["#8B008B", "#FF1493", "#00FF00"],
       "style": "retro",
@@ -457,6 +457,75 @@
       "avg_hold_days": 300,
       "velocity": "very_low",
       "total_trades": 1
+    }
+  },
+  {
+    "card_id": "RNS021",
+    "card_name": "Humble Farmer",
+    "image_url": "https://via.placeholder.com/400x600/8B7355/F5DEB3?text=Humble+Farmer",
+    "rarity": "common",
+    "artist": "Village Artisan",
+    "edition": "Common Folk",
+    "mint_date": "2024-06-20",
+    "total_supply": 10000,
+    "current_price": 0.05,
+    "price_history": [0.05, 0.05, 0.05, 0.05],
+    "visual_traits": {
+      "primary_colors": ["#8B7355", "#F5DEB3", "#D2B48C"],
+      "style": "organic",
+      "complexity": 3.2,
+      "mood": "peaceful"
+    },
+    "trading_history": {
+      "avg_hold_days": 5,
+      "velocity": "very_high",
+      "total_trades": 450
+    }
+  },
+  {
+    "card_id": "RNS022",
+    "card_name": "Forgotten Relic",
+    "image_url": "https://via.placeholder.com/400x600/696969/A9A9A9?text=Forgotten+Relic",
+    "rarity": "common",
+    "artist": "Unknown",
+    "edition": "Lost Artifacts",
+    "mint_date": "2023-12-01",
+    "total_supply": 8000,
+    "current_price": 0.08,
+    "price_history": [0.15, 0.12, 0.10, 0.08],
+    "visual_traits": {
+      "primary_colors": ["#696969", "#A9A9A9", "#D3D3D3"],
+      "style": "weathered",
+      "complexity": 4.0,
+      "mood": "melancholic"
+    },
+    "trading_history": {
+      "avg_hold_days": 3,
+      "velocity": "very_high",
+      "total_trades": 800
+    }
+  },
+  {
+    "card_id": "RNS023",
+    "card_name": "Diamond Hands HODLER",
+    "image_url": "https://via.placeholder.com/400x600/FFD700/FFFFFF?text=Diamond+HODLER",
+    "rarity": "legendary",
+    "artist": "Crypto Legend",
+    "edition": "Genesis OG",
+    "mint_date": "2023-11-01",
+    "total_supply": 25,
+    "current_price": 12.5,
+    "price_history": [2.0, 4.5, 8.0, 12.5],
+    "visual_traits": {
+      "primary_colors": ["#FFD700", "#FFA500", "#FFFFFF"],
+      "style": "abstract",
+      "complexity": 9.7,
+      "mood": "triumphant"
+    },
+    "trading_history": {
+      "avg_hold_days": 500,
+      "velocity": "very_low",
+      "total_trades": 0
     }
   }
 ]
