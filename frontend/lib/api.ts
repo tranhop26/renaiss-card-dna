@@ -78,6 +78,18 @@ export interface CollectorProfile {
   personality_traits: string[];
 }
 
+export interface PortfolioAnalytics {
+  wallet: string;
+  collection_size: number;
+  total_value: number;
+  average_score: number;
+  style_distribution: { style: string; count: number }[];
+  rarity_distribution: { rarity: string; count: number }[];
+  complexity_scores: { card_name: string; complexity: number }[];
+  primary_style: string;
+  collector_type: string;
+}
+
 // API Functions
 export const getCards = async (): Promise<{ total: number; cards: Card[] }> => {
   const response = await api.get('/api/cards');
@@ -101,6 +113,11 @@ export const getRecommendations = async (
   const response = await api.get(`/api/match/${wallet}/recommendations`, {
     params: { limit },
   });
+  return response.data;
+};
+
+export const getPortfolioAnalytics = async (wallet: string): Promise<PortfolioAnalytics> => {
+  const response = await api.get(`/api/portfolio/${wallet}/analytics`);
   return response.data;
 };
 

@@ -22,6 +22,9 @@ export default function HomePage() {
               <Link href="#profiler" className="text-muted hover:text-ink transition">
                 Profiler
               </Link>
+              <Link href="/portfolio" className="text-muted hover:text-ink transition">
+                Portfolio
+              </Link>
               <Link href="#about" className="text-muted hover:text-ink transition">
                 About
               </Link>
@@ -208,6 +211,12 @@ export default function HomePage() {
               className="px-8 py-3 bg-paper hover:bg-paper-light text-ink font-semibold rounded-lg transition"
             >
               Profile My Collection
+            </Link>
+            <Link
+              href="/portfolio"
+              className="px-8 py-3 bg-paper hover:bg-paper-light text-ink font-semibold rounded-lg transition border-2 border-amber"
+            >
+              📊 Portfolio Analytics
             </Link>
           </div>
         </div>

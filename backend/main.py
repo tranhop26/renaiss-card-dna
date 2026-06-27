@@ -114,7 +114,8 @@ async def root():
         "endpoints": [
             "/api/card/{card_id}/dna",
             "/api/collector/{wallet}/profile",
-            "/api/match/{wallet}/recommendations"
+            "/api/match/{wallet}/recommendations",
+            "/api/portfolio/{wallet}/analytics"
         ]
     }
 
@@ -220,6 +221,83 @@ async def get_card_recommendations(wallet: str, limit: int = 5):
         )
 
     return results
+
+@app.get("/api/portfolio/{wallet}/analytics")
+async def get_portfolio_analytics(wallet: str):
+    """
+    Portfolio analytics với data for charts
+
+    Args:
+        wallet: Wallet address
+
+    Returns:
+        Portfolio analytics data for visualization
+    """
+    global analyzer
+    if analyzer is None:
+        analyzer = get_analyzer()
+
+    # Get collector profile
+    profile = analyzer.analyze_collector_profile(wallet)
+
+    # Get all cards in collection (mock: random sample based on wallet)
+    import hashlib
+    wallet_hash = int(hashlib.md5(wallet.encode()).hexdigest()[:8], 16)
+    import random
+    random.seed(wallet_hash)
+
+    cards = load_mock_data()
+    collection_size = profile["collection_dna"]["total_cards"]
+    collection_cards = random.sample(cards, min(collection_size, len(cards)))
+
+    # Analyze collection
+    style_distribution = {}
+    rarity_distribution = {}
+    complexity_scores = []
+    total_value = 0
+    avg_score = 0
+
+    for card in collection_cards:
+        # Get card DNA
+        dna = analyzer.calculate_card_dna(card["card_id"])
+
+        # Style distribution
+        style = dna["visual_dna"]["style"]
+        style_distribution[style] = style_distribution.get(style, 0) + 1
+
+        # Rarity distribution
+        rarity = dna["market_dna"]["rarity_tier"]
+        rarity_distribution[rarity] = rarity_distribution.get(rarity, 0) + 1
+
+        # Complexity scores
+        complexity_scores.append({
+            "card_name": dna["card_name"],
+            "complexity": dna["visual_dna"]["complexity_score"]
+        })
+
+        # Total value and scores
+        total_value += dna["market_dna"].get("current_price", 0)
+        avg_score += dna["overall_score"]
+
+    avg_score = avg_score / len(collection_cards) if collection_cards else 0
+
+    return {
+        "wallet": wallet,
+        "collection_size": collection_size,
+        "total_value": round(total_value, 2),
+        "average_score": round(avg_score, 1),
+        "style_distribution": [
+            {"style": style, "count": count}
+            for style, count in style_distribution.items()
+        ],
+        "rarity_distribution": [
+            {"rarity": rarity, "count": count}
+            for rarity, count in rarity_distribution.items()
+        ],
+        "complexity_scores": sorted(complexity_scores, key=lambda x: x["complexity"], reverse=True)[:10],
+        "primary_style": profile["collection_dna"]["primary_style"],
+        "collector_type": profile["collection_dna"]["collector_type"]
+    }
 
 # ============================================
 # RUN SERVER
