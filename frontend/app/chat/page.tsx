@@ -31,7 +31,11 @@ export default function ChatPage() {
       const response = await sendChatMessage(userMessage, cardId || undefined);
       setMessages(prev => [...prev, { role: 'assistant', content: response.response }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, I encountered an error. Please try again!' }]);
+      console.error('Chat error:', error);
+      const errorMessage = error instanceof Error
+        ? `Sorry, I encountered an error: ${error.message}. Please try again!`
+        : 'Sorry, I encountered an error. Please check your connection and try again!';
+      setMessages(prev => [...prev, { role: 'assistant', content: errorMessage }]);
     } finally {
       setLoading(false);
     }
@@ -102,7 +106,14 @@ export default function ChatPage() {
             <div className="flex justify-start">
               <div className="bg-white border border-[#E2D9C8] px-4 py-3 rounded-lg">
                 <div className="text-xs text-[#8A8A80] mb-1">🤖 AI Advisor</div>
-                <p className="text-sm text-[#8A8A80]">Thinking...</p>
+                <div className="flex items-center gap-1">
+                  <p className="text-sm text-[#8A8A80]">Thinking</p>
+                  <div className="flex gap-1">
+                    <span className="w-1 h-1 bg-[#C8853F] rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
+                    <span className="w-1 h-1 bg-[#C8853F] rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
+                    <span className="w-1 h-1 bg-[#C8853F] rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+                  </div>
+                </div>
               </div>
             </div>
           )}

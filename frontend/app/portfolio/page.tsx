@@ -98,7 +98,32 @@ export default function PortfolioPage() {
       </div>
 
       {/* Results */}
-      {portfolio && (
+      {loading && (
+        <div className="max-w-7xl mx-auto space-y-6">
+          {/* Loading Skeleton */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="bg-white rounded-lg shadow-sm p-6 border border-[#E2D9C8] animate-pulse">
+                <div className="h-4 bg-[#E2D9C8] rounded w-24 mb-2"></div>
+                <div className="h-8 bg-[#E2D9C8] rounded w-16 mb-1"></div>
+                <div className="h-3 bg-[#E2D9C8] rounded w-12"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Loading Charts */}
+          <div className="bg-white rounded-lg shadow-sm p-6 border border-[#E2D9C8] animate-pulse">
+            <div className="h-6 bg-[#E2D9C8] rounded w-40 mb-4"></div>
+            <div className="space-y-3">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="h-8 bg-[#E2D9C8] rounded"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {portfolio && !loading && (
         <div className="max-w-7xl mx-auto space-y-6">
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

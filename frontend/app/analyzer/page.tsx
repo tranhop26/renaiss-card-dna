@@ -22,7 +22,7 @@ export default function AnalyzerPage() {
       setCards(data.cards);
     } catch (err) {
       console.error('Failed to load cards:', err);
-      setError('Failed to load cards. Please check if backend is running.');
+      setError('Failed to load cards. Please check your connection and try again.');
     }
   };
 
@@ -36,7 +36,9 @@ export default function AnalyzerPage() {
       const result = await getCardDNA(selectedCard);
       setDnaResult(result);
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Failed to analyze card');
+      const errorMessage = err.response?.data?.detail || err.message || 'Failed to analyze card. Please try again.';
+      setError(errorMessage);
+      console.error('Analysis error:', err);
     } finally {
       setLoading(false);
     }
