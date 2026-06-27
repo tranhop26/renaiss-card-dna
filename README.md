@@ -168,25 +168,119 @@ POST /api/chat
 
 ---
 
+## 🏗️ System Architecture
+
+```mermaid
+graph TB
+    subgraph "Frontend (Next.js)"
+        UI[User Interface]
+        API_CLIENT[API Client]
+    end
+    
+    subgraph "Backend (FastAPI)"
+        API[REST API Endpoints]
+        ENGINE[DNA Analysis Engine]
+        CHAT[AI Chat Service]
+    end
+    
+    subgraph "External Services"
+        OPENAI[OpenAI GPT-3.5]
+    end
+    
+    subgraph "Data Layer"
+        MOCK[Mock Card Data]
+        CACHE[In-Memory Cache]
+    end
+    
+    UI --> API_CLIENT
+    API_CLIENT -->|HTTP Requests| API
+    API --> ENGINE
+    API --> CHAT
+    CHAT --> OPENAI
+    ENGINE --> MOCK
+    ENGINE --> CACHE
+    
+    style UI fill:#C8853F,stroke:#A86B2C,color:#fff
+    style API fill:#C8853F,stroke:#A86B2C,color:#fff
+    style ENGINE fill:#F0E3D0,stroke:#C8853F
+    style CHAT fill:#F0E3D0,stroke:#C8853F
+    style OPENAI fill:#E2D9C8,stroke:#8A8A80
+```
+
 ## 🧠 How It Works
 
+### DNA Analysis Pipeline
+
+```mermaid
+graph LR
+    INPUT[Card Data] --> VISUAL[Visual DNA Analysis]
+    INPUT --> BEHAVIORAL[Behavioral DNA Analysis]
+    INPUT --> MARKET[Market DNA Analysis]
+    
+    VISUAL --> |Color Palette| SCORE1[Complexity Score]
+    VISUAL --> |Style Classification| SCORE1
+    
+    BEHAVIORAL --> |Trading Patterns| SCORE2[Activity Score]
+    BEHAVIORAL --> |Hold Time Analysis| SCORE2
+    
+    MARKET --> |Volatility| SCORE3[Market Score]
+    MARKET --> |Price Momentum| SCORE3
+    
+    SCORE1 --> AGGREGATE[Weighted Aggregation]
+    SCORE2 --> AGGREGATE
+    SCORE3 --> AGGREGATE
+    
+    AGGREGATE --> OUTPUT[Overall DNA Score + Personality]
+    
+    style INPUT fill:#F0E3D0,stroke:#C8853F
+    style OUTPUT fill:#C8853F,stroke:#A86B2C,color:#fff
+    style AGGREGATE fill:#E2D9C8,stroke:#8A8A80
+```
+
 ### Visual Analysis
-- Extracts color palettes from card metadata
-- Classifies artistic style (cyberpunk, fantasy, etc.)
-- Calculates complexity based on visual traits
+- Extracts color palettes from card metadata (3-5 dominant colors)
+- Classifies artistic style using keyword matching (cyberpunk, fantasy, nature, etc.)
+- Calculates complexity score (0-10) based on color richness and visual traits
+- Analyzes mood (intense, calm, mysterious) from style and color combinations
 
 ### Behavioral Clustering
-- Analyzes trading patterns (hold time, velocity)
-- Groups into collector archetypes
-- Scores activity levels
+- Analyzes trading patterns: hold time (days) and trading velocity (trades/month)
+- Groups into collector archetypes: long-term investor, active trader, strategic holder
+- Scores activity levels (0-1) based on transaction frequency
+- Calculates liquidity rating: high, medium, low
+
+### Market DNA
+- Volatility score (0-1) from price fluctuation simulation
+- Rarity tier classification: common, rare, epic, legendary
+- Price momentum indicators: bullish, neutral, bearish
+- Collection synergy tags for portfolio optimization
 
 ### Matching Algorithm
 ```python
 match_score = (
-    0.4 * visual_similarity +
-    0.3 * behavioral_fit +
-    0.2 * market_alignment +
-    0.1 * social_signals
+    0.4 * visual_similarity +      # Style & complexity match
+    0.3 * behavioral_fit +          # Collector type alignment
+    0.2 * market_alignment +        # Rarity & momentum fit
+    0.1 * social_signals            # Community trends (future)
+)
+```
+
+### AI Chat Context Injection
+```python
+# When user asks about a specific card
+context = {
+    "card_dna": get_card_dna(card_id),
+    "user_collection": get_collector_profile(wallet),
+    "market_trends": get_recent_trades(card_id)
+}
+
+# GPT-3.5 receives enriched prompt with card DNA metrics
+ai_response = openai.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": f"Card DNA: {context}"},
+        {"role": "user", "content": user_message}
+    ]
 )
 ```
 
