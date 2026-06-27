@@ -399,6 +399,133 @@ Guidelines:
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"AI chat error: {str(e)}")
 
+
+class CompareRequest(BaseModel):
+    card_id_1: str
+    card_id_2: str
+    collector_context: Optional[Dict] = None
+
+
+class CompareResponse(BaseModel):
+    card_1: Dict
+    card_2: Dict
+    comparison: Dict
+    ai_recommendation: str
+    winner: str  # "card_1", "card_2", or "tie"
+
+
+@app.post("/api/compare", response_model=CompareResponse)
+async def compare_cards(compare_request: CompareRequest):
+    """
+    So sánh 2 cards side-by-side với AI analysis
+
+    Args:
+        compare_request: 2 card IDs và optional collector context
+
+    Returns:
+        DNA comparison + AI recommendation
+    """
+    global analyzer
+    if analyzer is None:
+        analyzer = get_analyzer()
+
+    try:
+        # Get DNA for both cards
+        dna_1 = analyzer.calculate_card_dna(compare_request.card_id_1)
+        dna_2 = analyzer.calculate_card_dna(compare_request.card_id_2)
+
+        # Calculate differences
+        comparison = {
+            "visual": {
+                "complexity_diff": round(dna_1['visual_dna']['complexity_score'] - dna_2['visual_dna']['complexity_score'], 1),
+                "style_match": dna_1['visual_dna']['style'] == dna_2['visual_dna']['style']
+            },
+            "behavioral": {
+                "hold_time_diff": dna_1['behavioral_dna'].get('avg_hold_days', 0) - dna_2['behavioral_dna'].get('avg_hold_days', 0),
+                "collector_type_match": dna_1['behavioral_dna']['collector_type'] == dna_2['behavioral_dna']['collector_type']
+            },
+            "market": {
+                "price_momentum": {
+                    "card_1": dna_1['market_dna']['price_momentum'],
+                    "card_2": dna_2['market_dna']['price_momentum']
+                },
+                "volatility_diff": round(dna_1['market_dna']['volatility'] - dna_2['market_dna']['volatility'], 3)
+            },
+            "overall_score_diff": round(dna_1['overall_score'] - dna_2['overall_score'], 1)
+        }
+
+        # Build AI prompt
+        context = f"""
+Compare these two cards:
+
+**Card 1: {dna_1['card_name']}**
+- Rarity: {dna_1['rarity']}
+- Overall Score: {dna_1['overall_score']}/10
+- Style: {dna_1['visual_dna']['style']}
+- Complexity: {dna_1['visual_dna']['complexity_score']}/10
+- Collector Type: {dna_1['behavioral_dna']['collector_type']}
+- Price Momentum: {dna_1['market_dna']['price_momentum']}
+
+**Card 2: {dna_2['card_name']}**
+- Rarity: {dna_2['rarity']}
+- Overall Score: {dna_2['overall_score']}/10
+- Style: {dna_2['visual_dna']['style']}
+- Complexity: {dna_2['visual_dna']['complexity_score']}/10
+- Collector Type: {dna_2['behavioral_dna']['collector_type']}
+- Price Momentum: {dna_2['market_dna']['price_momentum']}
+"""
+
+        if compare_request.collector_context:
+            context += f"\n**Collector Context:** {json.dumps(compare_request.collector_context)}\n"
+
+        system_prompt = f"""{context}
+
+Your task: Compare these cards and recommend which one is better.
+
+Analyze:
+- Visual appeal and complexity
+- Trading behavior and collector fit
+- Market performance and momentum
+
+Provide a 3-4 sentence recommendation explaining:
+1. Key differences
+2. Which card fits better and why
+3. Specific advice
+
+Be concise and actionable."""
+
+        # Call OpenAI
+        response = openai_client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": "Which card should I choose?"}
+            ],
+            temperature=0.7,
+            max_tokens=250
+        )
+
+        ai_recommendation = response.choices[0].message.content
+
+        # Determine winner based on overall score
+        if comparison['overall_score_diff'] > 0.5:
+            winner = "card_1"
+        elif comparison['overall_score_diff'] < -0.5:
+            winner = "card_2"
+        else:
+            winner = "tie"
+
+        return CompareResponse(
+            card_1=dna_1,
+            card_2=dna_2,
+            comparison=comparison,
+            ai_recommendation=ai_recommendation,
+            winner=winner
+        )
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Comparison error: {str(e)}")
+
 # ============================================
 # RUN SERVER
 # ============================================

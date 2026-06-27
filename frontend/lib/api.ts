@@ -139,4 +139,42 @@ export const sendChatMessage = async (
   return response.data;
 };
 
+export interface CompareResponse {
+  card_1: CardDNA;
+  card_2: CardDNA;
+  comparison: {
+    visual: {
+      complexity_diff: number;
+      style_match: boolean;
+    };
+    behavioral: {
+      hold_time_diff: number;
+      collector_type_match: boolean;
+    };
+    market: {
+      price_momentum: {
+        card_1: string;
+        card_2: string;
+      };
+      volatility_diff: number;
+    };
+    overall_score_diff: number;
+  };
+  ai_recommendation: string;
+  winner: string; // "card_1", "card_2", or "tie"
+}
+
+export const compareCards = async (
+  cardId1: string,
+  cardId2: string,
+  collectorContext?: Record<string, any>
+): Promise<CompareResponse> => {
+  const response = await api.post('/api/compare', {
+    card_id_1: cardId1,
+    card_id_2: cardId2,
+    collector_context: collectorContext
+  });
+  return response.data;
+};
+
 export default api;
