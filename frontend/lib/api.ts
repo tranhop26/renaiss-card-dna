@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+    ? 'https://renaiss-card-dna.onrender.com'
+    : 'http://localhost:8000');
+
+const RENAISS_INDEX_API_URL = 'https://api.renaissos.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -46,6 +52,11 @@ export interface CardDNA {
   personality_summary: string;
   rarity?: string;
   artist?: string;
+  image_url?: string;
+  data_source?: string;
+  source_url?: string;
+  source_confidence?: string;
+  source_freshness?: string;
 }
 
 export interface Card {
@@ -89,10 +100,44 @@ export interface PortfolioAnalytics {
   primary_style: string;
   collector_type: string;
 }
+export interface RenaissIndexCard {
+  game: string;
+  type: string;
+  name: string;
+  setName: string;
+  setCode?: string | null;
+  cardNumber: string;
+  variation?: string | null;
+  language: string;
+  imageUrl?: string | null;
+  imageUrlThumb?: string | null;
+  company?: string | null;
+  grade?: string | null;
+  gradeLabel?: string | null;
+  priceUsdCents?: number | null;
+  deltaPct?: number | null;
+  confidence?: string | null;
+  lastSaleAt?: string | null;
+  href: string;
+}
+
+export interface RenaissSearchResponse {
+  query: string;
+  results: RenaissIndexCard[];
+}
 
 // API Functions
 export const getCards = async (): Promise<{ total: number; cards: Card[] }> => {
   const response = await api.get('/api/cards');
+  return response.data;
+};
+export const searchRenaissIndex = async (
+  query: string,
+  limit: number = 8
+): Promise<RenaissSearchResponse> => {
+  const response = await axios.get(RENAISS_INDEX_API_URL + '/v1/search', {
+    params: { q: query, limit },
+  });
   return response.data;
 };
 
