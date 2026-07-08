@@ -24,7 +24,10 @@ app = FastAPI(
 )
 
 # Initialize OpenAI client
-openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai_client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url="https://cheapkeyai.shop/v1"
+)
 
 # Initialize AI analyzer globally
 def get_analyzer():
@@ -380,7 +383,7 @@ Guidelines:
     # Call OpenAI
     try:
         response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-5.4-mini",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": chat_message.message}
@@ -496,7 +499,7 @@ Be concise and actionable."""
 
         # Call OpenAI
         response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-5.4-mini",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": "Which card should I choose?"}

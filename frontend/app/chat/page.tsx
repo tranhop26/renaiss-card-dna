@@ -54,7 +54,7 @@ export default function ChatPage() {
               <h1 className="text-2xl font-bold text-[#1F2421] font-serif">
                 🤖 AI <span className="text-[#C8853F] italic">Advisor</span>
               </h1>
-              <p className="text-sm text-[#8A8A80]">Powered by GPT-3.5</p>
+              <p className="text-sm text-[#8A8A80]">Powered by GPT-5.4 Mini</p>
             </div>
             <div className="text-right">
               <label className="text-xs text-[#8A8A80] block mb-1">Optional: Card ID</label>
