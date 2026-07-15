@@ -383,7 +383,7 @@ Guidelines:
     # Call OpenAI
     try:
         response = openai_client.chat.completions.create(
-            model="gpt-5.4-mini",
+            model="gpt-5.5",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": chat_message.message}
@@ -499,7 +499,7 @@ Be concise and actionable."""
 
         # Call OpenAI
         response = openai_client.chat.completions.create(
-            model="gpt-5.4-mini",
+            model="gpt-5.5",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": "Which card should I choose?"}
